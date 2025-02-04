@@ -1,4 +1,4 @@
-<h1>Ordered page</h1>
+<!-- <h1>Ordered page</h1>
 <div><?php if(isset($message)) echo $message ?></div>
 <?php 
 try{
@@ -8,4 +8,56 @@ try{
 }catch(Exception $e){
     
 }
-?>
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <div class="container mt-5">
+        <h2 class="mb-4">Cart</h2>
+        <table class="table table-bordered align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quanity</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($row as $product){
+                echo '<tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src=loadImage.php?file_name='.$product[4].'
+                                alt="Product '.$product[0].'" class="img-thumbnail me-2" style="width: 100px;">
+                            <div>
+                                <p class="mb-1"><strong>'. $product[1].'</strong></p>
+
+                            </div>
+                        </div>
+                    </td>
+                    <td>'.$product[2].'</td>
+                    <td>
+                        <div class="d-flex justify-content-center align-items-center"> 
+                            <input type="text" value="'.$product[3].'" class="form-control text-center mx-2" style="width: 50px;">
+                        </div>
+                    </td>
+                    <td>'.$product[2] * $product[3].'</td>
+                    <td><a href="#" class="text-danger">Remove</a></td>
+                </tr>';
+                } ?>
+            </tbody>
+        </table>
+    
+        <!-- Tổng tiền -->
+        <div class="d-flex justify-content-end mt-4">
+            <div class="text-end" >
+                <h5 class="mb-3">Total: <span class="text-danger">328.000 VND</span></h5>
+                <button type="submit" class="btn btn-primary" id="xanh">Pay</button>
+            </div>
+        </div>
+    </div>
+</html>

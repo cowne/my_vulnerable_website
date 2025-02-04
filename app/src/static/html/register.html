@@ -1,34 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../static/css/styles.css">
-</head>
-
-<body>        
-  <br/>
-  <br/>
-  <h1 >SQL Injection workshop</h3>
-  <h2 style="text-align: center;">Register</h2>
-  <form class="form-login" method="post" onsubmit="customSubmit(this)">
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-
-      <label for="add"><b>Address</b></label>
-      <input type="text" placeholder="Enter Address" name="address" required>
-
-      <label for="phone"><b>Phone</b></label>
-      <input type="text" placeholder="Enter Phone" name="phone" required>
-      <span>
-        <?php if (isset($message)) echo $message;?>
-      </span>
-      <button type="submit">Submit</button>
-      <p style="left: 200px;">Have your account? <a href="/login.php">Login page</a></p>
+<!-- Register as a Member -->
+<div class="container my-5">
+    <h2 class="text-center mb-4 register-heading">Sign Up</h2>
+    <div class="text-center">
+        <hr style="width: 50%; border: 1px solid #000000; margin: 0 auto;" />
     </div>
-  </form>
+    <form action="register.php" method="POST" class="mx-auto" style="max-width: 500px;">
+        <!-- Username -->
+        <div class="mb-3">
+            <label for="username" class="form-label register-label username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="" required />
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+            <label for="password" class="form-label register-label password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="" required />
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+            <label for="phone" class="form-label register-label phone">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="" required />
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+            <label for="address" class="form-label register-label address">Address</label>
+            <textarea class="form-control" id="address" name="address" rows="3" placeholder="" required></textarea>
+        </div>
+
+
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="btn custom-btn">Create Account</button>
+        </div>
+    </form>
+    <!-- Already have an account -->
+    <div class="text-center mt-4">
+        <p class="mb-0">Already have an account?
+            <a href="login.php" style="color: #052e26; font-weight: bold;">Log In</a>
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
+
+</html>

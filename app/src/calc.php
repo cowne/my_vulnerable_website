@@ -7,6 +7,8 @@ ob_start();
 
         $totalPrice = eval("return $price * $num_order;"); // insecure
         
+        echo "<div class=\"container mt-5\">";
+        echo "<div class=\"mt-4\">";
         echo "<p>The total price is: " . $totalPrice . "</p>";
         echo '<form action="/cart.php?action=add" method="post">';
         echo '<input type="hidden" name="product_id" value="' . $id . '">';
@@ -17,5 +19,7 @@ ob_start();
         echo '<input type="hidden" name="totalPrice" value="' . $totalPrice . '">';
         echo '<button type="submit" name="submit">Buy</button>';
         echo '</form>';
+        echo '</div>';
+        echo "</div>";
     }
 ?>

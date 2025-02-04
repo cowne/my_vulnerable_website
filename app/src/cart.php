@@ -53,7 +53,7 @@ if (isset($_GET['action'])){
     //$id = $_GET['id'];
     $id = $_SESSION['user_id'];
     try{
-        $query = "select p.name,p.price,cp.number_of_ordered_product from cart as c, users as u ,products as p , cart_product as cp where c.user_id= u.id and c.id=cp.id_cart and cp.id_product=p.id and u.id=".$id;
+        $query = "select p.id,p.name,p.price,cp.number_of_ordered_product,p.image_product from cart as c, users as u ,products as p , cart_product as cp where c.user_id= u.id and c.id=cp.id_cart and cp.id_product=p.id and u.id=".$id;
         $db_result = $database->query($query);
     }catch(mysqli_sql_exception $e){
         $message = $e->getMessage();

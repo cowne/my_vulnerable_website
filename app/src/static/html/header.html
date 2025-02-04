@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Vulnerabilities Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            background-color: #333;
-            overflow: hidden;
-        }
-        .header a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        .header a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .content {
-            padding: 20px;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Vulnerable Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/home.css">
 </head>
-<body>
-    <div class="header">
-        <a href="index.php">Home</a>
-        <a href="cart.php">Cart</a>
-        <a href="login.php">Login</a>
-        <a href="register.php">Register</a>
-        <a href="profile.php">Profile</a>
-        <a href="logout.php">Logout</a>
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark" id="head">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">MiniShop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <!-- Menu links -->
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="cart.php">Order</a>
+                <a class="nav-link active" aria-current="page" href="profile.php">Profile</a>
+            </div>
+
+            <!-- Thanh Search Bar ở giữa -->
+            <div class="d-flex mx-auto" style="width: 60%;">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </div>
+
+            <!-- Cart, User, Login và Register -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-user"></i>
+                    </a>
+                <?php if(!isset($_SESSION['username'])){
+                echo '<li>';
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link border rounded px-3 py-1" href="login.php" style="color: white; border-color: white;">Login/Register</a>';               
+                echo '</li>';
+            }else{
+                echo ' <li class="nav-item">';
+                echo '<a class="nav-link border rounded px-3 py-1" href="logout.php" style="color: white; border-color: white;">Logout</a>';
+                echo '</li>';
+            }
+             ?>   
+            </ul>
+        </div>
     </div>
-    <div class="content">
-        <!-- Your page content goes here -->
-    </div>
-</body>
-</html>
+</nav>

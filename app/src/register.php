@@ -23,7 +23,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = $e->getMessage();
     }
 }
-
-
-
 include "static/html/register.html";
