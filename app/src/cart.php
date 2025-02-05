@@ -16,7 +16,8 @@ if (isset($_GET['action'])){
                 add_to_cart($product_id,$user_id,$num_order);
                 $message = 'Order successful';
                 header('Location: cart.php');
-            }else{
+            }
+            else{
                 header('Location: cart.php');
             }
             break;
@@ -43,7 +44,30 @@ if (isset($_GET['action'])){
             }
             break;
         case "delete": // remove cart
-            echo "delete order";
+            if(isset($_GET['cart_product'])){
+                $username = $_SESSION['username'];
+                $cart_product_id = $_GET['cart_product'];
+                include 'db.php';
+                // prevent IDOR
+                $query = 'select cp.id, u.username 
+                from users as u, cart_product as cp, cart as c 
+                where u.id = c.user_id and c.id = cp.id_cart and cp.id= ? and u.username = ?';
+                $sql = $database->prepare($query);
+                $sql->bind_param("ss",$cart_product_id,$username);
+                $sql->execute();
+                $sql->store_result();
+                if ($sql->num_rows() > 0){
+                    $delete_query = 'delete FROM cart_product WHERE id = ?';
+                    $sth = $database->prepare($delete_query);
+                    $sth->bind_param('s', $cart_product_id);
+                    $sth->execute();
+                    $message = "DELETE YOUR ORDER.";
+                    header("Location: /cart.php");
+                } else{
+                    $message = "IDOR DETECTED.";
+                    header('Location: /cart.php');
+                }
+            }
             break;
         default:
             echo "nothing";
@@ -53,7 +77,8 @@ if (isset($_GET['action'])){
     //$id = $_GET['id'];
     $id = $_SESSION['user_id'];
     try{
-        $query = "select p.id,p.name,p.price,cp.number_of_ordered_product,p.image_product from cart as c, users as u ,products as p , cart_product as cp where c.user_id= u.id and c.id=cp.id_cart and cp.id_product=p.id and u.id=".$id;
+        $query = "select p.id, p.name, p.price, cp.number_of_ordered_product, p.image_product, cp.id 
+        from cart as c, users as u ,products as p , cart_product as cp where c.user_id= u.id and c.id=cp.id_cart and cp.id_product=p.id and u.id=".$id;
         $db_result = $database->query($query);
     }catch(mysqli_sql_exception $e){
         $message = $e->getMessage();

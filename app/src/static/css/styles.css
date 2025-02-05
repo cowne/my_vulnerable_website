@@ -1,59 +1,60 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
+#head{
+    background-color: #69ba5b !important;
+}
+.custom-btn {
+    background-color: #69ba5b; /* Màu nền tùy chỉnh */
+    color: #ffffff; /* Màu chữ */
+    border: none; /* Xóa viền */
+    padding: 3px 20px; /* Căn chỉnh kích thước */
+    border-radius: 9px; /* Bo góc */
+    font-size: 18px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ chuột */
+}
+.custom-btn:hover {
+    background-color: #000; /* Màu khi hover */
+    color: #fff; /* Màu chữ khi hover */
+}
+.best-seller-text {
+    font-family: Bradley Hand ITC, sans-serif; /* Font chữ tùy chỉnh */
+    font-size: 60px; /* Kích thước chữ */
+    font-weight: bold; /* Đậm chữ */
+    color: #000000; /* Màu chữ */
+    text-transform: uppercase; /* Viết hoa toàn bộ chữ */
+    letter-spacing: 2px; /* Khoảng cách giữa các chữ cái */
+    text-align: center; /* Căn giữa chữ */
+}
+/* Styles for Register as a Member section */
+.register-heading {
+    font-family: Light;
+    color: #000000; /* Blue for the heading */
+    font-weight: bold;
 }
 
-h1 {
-    text-align: center;
-    font-size: 3.5rem;
-    font-weight: 300;
-    line-height: 1.2;
+.register-label {
+    font-family: Light;
+    font-size: 19px;
 }
 
-h2 {
-    text-align: center;
+.register-label.username {
+    font-family: Light;
+    color: #000000;
 }
 
-/* Full-width input fields */
-input[type=text],
-input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+.register-label.password {
+    color: #000000; /* Red for Password label */
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+.register-label.phone {
+    color: #000000; /* Yellow for Phone Number label */
 }
 
-button:hover {
-    opacity: 0.8;
+.register-label.address {
+    color: #000000; /* Purple for Address label */
 }
-
-.container {
-    padding: 16px;
+#xanh{
+    background-color: #69ba5b !important;
+    border: 1px solid #69ba5b !important;
 }
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* Form Login */
-.form-login {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto;
-    /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
+#text{
+    color: #ffffff;
 }

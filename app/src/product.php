@@ -17,7 +17,7 @@ if ($_GET['id']){
         $image_product = $row['image_product'];
         $description = $row['description'];
     } else{
-        die('Cannot search product.');
+        header('Location: /404.php');
     }
 }else{
     header('Location: /index.php');
