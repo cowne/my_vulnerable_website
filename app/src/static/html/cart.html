@@ -15,16 +15,21 @@
             </thead>
             <tbody>
                 <?php 
-                if(isset($message)){
-                    echo $message;
+                if (is_null($row)){
+                    echo '<script>alert("You are not order yet.")</script>';
+                    $sum =0 ;
                 }
-                foreach($row as $product){
-                $product_id = $product[0];
-                $product_name = $product[1];
-                $product_price = $product[2];
-                $number_ordered = $product[3];
-                $image_product = $product[4];
-                $cart_product_id = $product[5];
+                else{
+                    $sum =0 ;
+                    foreach($row as $product){
+                        $product_id = $product[0];
+                        $product_name = $product[1];
+                        $product_price = $product[2];
+                        $number_ordered = $product[3];
+                        $image_product = $product[4];
+                        $cart_product_id = $product[5];
+
+                        $sum = $sum + ($product_price * $num_order);
                 echo '<tr>
                     <td><input type="checkbox"></td>
                     <td>
@@ -46,16 +51,30 @@
                     <td>'.$product_price * $number_ordered.'</td>
                     <td><a href="cart.php?action=delete&cart_product='.$cart_product_id.'" class="text-danger">Remove</a></td>
                 </tr>';
-                } ?>
+                }
+             } ?>
             </tbody>
         </table>
     
         <!-- Tổng tiền -->
-        <div class="d-flex justify-content-end mt-4">
+         <?php
+         $sum = 0.0;
+         if(is_null($row)){
+            $sum = 0;
+         }
+         else{
+            foreach($row as $product){
+                $product_price = $product[2];
+                $number_ordered = $product[3];
+                $sum += $product_price * $number_ordered;
+            }
+         }
+        echo '<div class="d-flex justify-content-end mt-4">
             <div class="text-end" >
-                <h5 class="mb-3">Total: <span class="text-danger">328.000 VND</span></h5>
+                <h5 class="mb-3">Total: <span class="text-danger">'.$sum.'</span></h5>
                 <button type="submit" class="btn btn-primary" id="xanh">Pay</button>
             </div>
-        </div>
+        </div>';
+        ?>
     </div>
 </html>

@@ -1,2 +1,27 @@
-<h1>MAIN PAGE</h1>
-<div><?php if(isset($message)) echo $message;?></div>
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        
+<!-- Products Section -->
+<div class="container my-5">
+    <h2 class="best-seller-text text-center mb-4">Product</h2>
+    <div class="row justify-content-center">
+        <?php
+        foreach($row as $product_info){
+            $product_id = $product_info[0];
+            $product_name = $product_info[1];
+            $product_price = $product_info[2];
+            $product_image = $product_info[3];          
+        echo '<div class="col-md-4 mb-4 text-center">
+            <a href="/product.php?id='.$product_id.'">
+                <img src="./loadImage.php?file_name='.$product_image.'"
+                    class="img-fluid" style="max-width: 200px; height: auto;" alt="'.$product_name.'" /> </a>
+            <p class="card-text mt-2">More information about'.$product_name.'</p>
+            <a href="/product.php?id='.$product_id.'" class="btn custom-btn">Buy now</a>
+        </div>';
+    }
+        ?>
+    </div>
+</div>
+    </body>
+</html>

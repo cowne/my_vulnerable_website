@@ -61,12 +61,11 @@ if (isset($_GET['action'])){
                     $sth = $database->prepare($delete_query);
                     $sth->bind_param('s', $cart_product_id);
                     $sth->execute();
-                    $message = "DELETE YOUR ORDER.";
-                    header("Location: /cart.php");
+                    $message_func = "DELETE YOUR ORDER.";
                 } else{
-                    $message = "IDOR DETECTED.";
-                    header('Location: /cart.php');
+                    $message_func = "IDOR DETECTED.";
                 }
+                header('Location: /cart.php');
             }
             break;
         default:
