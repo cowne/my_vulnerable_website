@@ -2,59 +2,59 @@
     background-color: #69ba5b !important;
 }
 .custom-btn {
-    background-color: #69ba5b; /* Màu nền tùy chỉnh */
-    color: #ffffff; /* Màu chữ */
-    border: none; /* Xóa viền */
-    padding: 3px 20px; /* Căn chỉnh kích thước */
-    border-radius: 9px; /* Bo góc */
-    font-size: 18px; /* Kích thước chữ */
-    cursor: pointer; /* Con trỏ chuột */
+    background-color: #69ba5b!important; /* Màu nền tùy chỉnh */
+    color: #ffffff!important; /* Màu chữ */
+    border: none !important; /* Xóa viền */
+    padding: 3px 20px !important; /* Căn chỉnh kích thước */
+    border-radius: 9px !important; /* Bo góc */
+    font-size: 18px !important; /* Kích thước chữ */
+    cursor: pointer !important; /* Con trỏ chuột */
 }
 .custom-btn:hover {
-    background-color: #000; /* Màu khi hover */
-    color: #fff; /* Màu chữ khi hover */
+    background-color: #000 !important; /* Màu khi hover */
+    color: #fff !important; /* Màu chữ khi hover */
 }
 .best-seller-text {
-    font-family: Bradley Hand ITC, sans-serif; /* Font chữ tùy chỉnh */
-    font-size: 60px; /* Kích thước chữ */
-    font-weight: bold; /* Đậm chữ */
-    color: #000000; /* Màu chữ */
-    text-transform: uppercase; /* Viết hoa toàn bộ chữ */
-    letter-spacing: 2px; /* Khoảng cách giữa các chữ cái */
-    text-align: center; /* Căn giữa chữ */
+    font-family: Bradley Hand ITC, sans-serif !important; /* Font chữ tùy chỉnh */
+    font-size: 60px !important; /* Kích thước chữ */
+    font-weight: bold !important; /* Đậm chữ */
+    color: #000000 !important; /* Màu chữ */
+    text-transform: uppercase !important; /* Viết hoa toàn bộ chữ */
+    letter-spacing: 2px !important; /* Khoảng cách giữa các chữ cái */
+    text-align: center !important; /* Căn giữa chữ */
 }
 /* Styles for Register as a Member section */
 .register-heading {
-    font-family: Light;
-    color: #000000; /* Blue for the heading */
-    font-weight: bold;
+    font-family: Light !important;
+    color: #000000 !important; /* Blue for the heading */
+    font-weight: bold !important;
 }
 
 .register-label {
-    font-family: Light;
-    font-size: 19px;
+    font-family: Light !important;
+    font-size: 19px !important;
 }
 
 .register-label.username {
-    font-family: Light;
-    color: #000000;
+    font-family: Light !important;
+    color: #000000 !important;
 }
 
 .register-label.password {
-    color: #000000; /* Red for Password label */
+    color: #000000 !important; /* Red for Password label */
 }
 
 .register-label.phone {
-    color: #000000; /* Yellow for Phone Number label */
+    color: #000000 !important; /* Yellow for Phone Number label */
 }
 
 .register-label.address {
-    color: #000000; /* Purple for Address label */
+    color: #000000 !important; /* Purple for Address label */
 }
 #xanh{
     background-color: #69ba5b !important;
     border: 1px solid #69ba5b !important;
 }
 #text{
-    color: #ffffff;
+    color: #ffffff !important;
 }

@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <div class="container mt-5">
-        <h2 class="mb-4">Cart</h2>
-        <table class="table table-bordered align-middle text-center">
-            <thead class="table-light">
-                <tr>
-                    <th><input type="checkbox"></th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quanity</th>
-                    <th>Total</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
+<div class="container mt-5">
+    <h2 class="mb-4">Cart</h2>
+    <table class="table table-bordered align-middle text-center">
+        <thead class="table-light">
+            <tr>
+                <th><input type="checkbox"></th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quanity</th>
+                <th>Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                $sum = 0.0;
                 if (is_null($row)){
                     echo '<script>alert("You are not order yet.")</script>';
-                    $sum =0 ;
                 }
                 else{
-                    $sum =0 ;
                     foreach($row as $product){
                         $product_id = $product[0];
                         $product_name = $product[1];
@@ -29,7 +28,7 @@
                         $image_product = $product[4];
                         $cart_product_id = $product[5];
 
-                        $sum = $sum + ($product_price * $num_order);
+                        $sum += $product_price * $number_ordered;
                 echo '<tr>
                     <td><input type="checkbox"></td>
                     <td>
@@ -52,29 +51,23 @@
                     <td><a href="cart.php?action=delete&cart_product='.$cart_product_id.'" class="text-danger">Remove</a></td>
                 </tr>';
                 }
-             } ?>
+             }
+             $_SESSION['totalMoney'] = $sum;
+             echo '
             </tbody>
         </table>
     
-        <!-- Tổng tiền -->
-         <?php
-         $sum = 0.0;
-         if(is_null($row)){
-            $sum = 0;
-         }
-         else{
-            foreach($row as $product){
-                $product_price = $product[2];
-                $number_ordered = $product[3];
-                $sum += $product_price * $number_ordered;
-            }
-         }
-        echo '<div class="d-flex justify-content-end mt-4">
-            <div class="text-end" >
-                <h5 class="mb-3">Total: <span class="text-danger">'.$sum.'</span></h5>
+        
+<div class="d-flex justify-content-end mt-4">
+            <div class="text-end">
+                <h5 class="mb-3">Total: <span class="text-danger" id="totalAmount">'.$_SESSION['totalMoney'].'</span></h5>
+            <form action="cart.php?action=buy" method="post">
+                <input type="hidden" name="pay" id="amountInput" value="1">
                 <button type="submit" class="btn btn-primary" id="xanh">Pay</button>
-            </div>
-        </div>';
-        ?>
-    </div>
+            </form>
+</div>
+</div>';
+?>
+</div>
+
 </html>

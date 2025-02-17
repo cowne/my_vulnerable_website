@@ -21,28 +21,34 @@ if (isset($_GET['action'])){
                 header('Location: cart.php');
             }
             break;
-        case "buy": // calculate 
-            if(isset($_POST['totalPrice'])){
-                $money = $_SESSION['money'];
-                $price = $_POST['totalPrice'];
-                if($money > $price){
-                    //echo 'You can buy';
-                    include 'db.php';
-                    $money = $money - $price;
-                    $query = "UPDATE users SET money =? WHERE username =?";
-                    $sth = $database->prepare($query);
-                    $sth->bind_param('ss',$money,$_SESSION['username']);
-                    $sth->execute();
+        case "buy": 
+            include 'db.php';
+            $id = $_SESSION['user_id'];
+            try{
+                $query = "select p.id, p.name, p.price, cp.number_of_ordered_product, p.image_product, cp.id 
+                from cart as c, users as u ,products as p , cart_product as cp where c.user_id= u.id and c.id=cp.id_cart and cp.id_product=p.id and u.id=".$id;
+                $db_result = $database->query($query);
+            }catch(mysqli_sql_exception $e){
+                $message = $e->getMessage();
+            }
+            if($db_result->num_rows > 0){
+                $row = $db_result->fetch_all();
+            }
+            if(isset($_POST['pay']) and $_POST['pay'] == 1){
+                $money_user = $_SESSION['money'];
+                $money_total = $_SESSION['totalMoney'];
+                if ($money_total > $money_user){
+                    echo '<script>alert("Money khong du, moi nap them")</script>';
+                }else{
+                    $money = $money_user - $money_total;
                     $_SESSION['money'] = $money;
-                    $message = "<script>alert(\"Buy successful! Continue to shopping?\")</script>";
-                    header('Refresh:1 ; url=/index.php');
-                }
-                else{
-                    $message = "<script>alert(\"You don't have enough money\")</script>";
-                    header('Refresh:1 ; url=/index.php');
+                    $sql = "UPDATE users SET money =" .$money."where id =".$id;
+                    $database->query($sql);
+                    echo '<script>alert("Da thanh toan xong")</script>';
                 }
             }
             break;
+
         case "delete": // remove cart
             if(isset($_GET['cart_product'])){
                 $username = $_SESSION['username'];
