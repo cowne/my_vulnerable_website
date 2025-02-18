@@ -29,11 +29,11 @@ CREATE TABLE products (
 );
 
 INSERT INTO products (name, price, image_product, description) VALUES
-('Smartphone XYZ', 499.99, 'images/smartphone_xyz.jpg', 'A high-end smartphone with a 6.5-inch display and 128GB storage'),
-('Wireless Headphones', 79.99, 'images/wireless_headphones.jpg', 'Comfortable wireless headphones with noise-cancellation feature'),
-('Laptop ABC', 899.99, 'images/laptop_abc.jpg', 'A powerful laptop with 16GB RAM and 512GB SSD'),
-('Fitness Tracker', 59.99, 'images/fitness_tracker.jpg', 'A sleek fitness tracker with heart rate monitoring'),
-('Smartwatch DEF', 199.99, 'images/smartwatch_def.jpg', 'A stylish smartwatch with fitness tracking and message notifications');
+('Smartphone XYZ', 499.99, 'smartphone_xyz.jpg', 'A high-end smartphone with a 6.5-inch display and 128GB storage'),
+('Wireless Headphones', 79.99, 'wireless_headphones.jpg', 'Comfortable wireless headphones with noise-cancellation feature'),
+('Laptop ABC', 899.99, 'laptop_abc.jpg', 'A powerful laptop with 16GB RAM and 512GB SSD'),
+('Fitness Tracker', 59.99, 'fitness_tracker.jpg', 'A sleek fitness tracker with heart rate monitoring'),
+('Smartwatch DEF', 199.99, 'smartwatch_def.jpg', 'A stylish smartwatch with fitness tracking and message notifications');
 
 -- Tao bang cart
 CREATE TABLE cart (
