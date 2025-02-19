@@ -44,12 +44,17 @@ if (isset($_GET['action'])){
                     $_SESSION['money'] = $money;
                     $sql = "UPDATE users SET money =" .$money."where id =".$id;
                     $database->query($sql);
+
                     echo '<script>alert("Da thanh toan xong")</script>';
+                    $id_cart = get_cart_id($id);
+                    $query_delete = "DELETE FROM cart_product WHERE id_cart =".$id_cart;
+                    $database->query($query_delete);
+                    header( "refresh:1;url=index.php" );
                 }
             }
             break;
 
-        case "delete": // remove cart
+        case "delete": // delete product ordered
             if(isset($_GET['cart_product'])){
                 $username = $_SESSION['username'];
                 $cart_product_id = $_GET['cart_product'];
